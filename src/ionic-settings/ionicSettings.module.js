@@ -406,7 +406,7 @@
             
             self.fetch = function(key) {
                 var q = $q.defer();
-                if ($window.plugins) {
+                if ($window.plugins && $window.plugins.appPreferences) {
                     $window.plugins.appPreferences.fetch(key).then(function(value) {
                         if (value === null) {
                             q.reject(value);
@@ -559,7 +559,7 @@
 
             self.store = function(key, value) {
                 var q = $q.defer();
-                if ($window.plugins) {
+                if ($window.plugins && $window.plugins.appPreferences) {
                     $window.plugins.appPreferences.store(key, value).then(function(value) {
                         q.resolve(value);
                     }, function(error) {
